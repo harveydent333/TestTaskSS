@@ -1,0 +1,24 @@
+﻿@{
+    @model IEnumerable<Word>
+    Layout = "_Layout";
+}
+<table class="table table-sm" style="position: relative; top:+70px; left:+20px; width: 90%">
+    <thead>
+        <tr>
+            <th scope="col">Слово:</th>
+            <th scope="col">Количеств на странице</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (Word word in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(w=>word.WordName)</td>
+                    <td>@Html.DisplayFor(w => word.WordCount)</td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>

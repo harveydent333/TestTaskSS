@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestTaskForSimbirSoft", "TestTaskForSimbirSoft\TestTaskForSimbirSoft.csproj", "{DA6F5B6B-6DA5-445B-8FCC-5CB5E70E32D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTaskForSimbirSoft.Test", "TestTaskForSimbirSoft.Test\TestTaskForSimbirSoft.Test.csproj", "{F37DF43B-049F-47DF-AA02-84A3A98F4AC0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA6F5B6B-6DA5-445B-8FCC-5CB5E70E32D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA6F5B6B-6DA5-445B-8FCC-5CB5E70E32D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA6F5B6B-6DA5-445B-8FCC-5CB5E70E32D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA6F5B6B-6DA5-445B-8FCC-5CB5E70E32D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F37DF43B-049F-47DF-AA02-84A3A98F4AC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F37DF43B-049F-47DF-AA02-84A3A98F4AC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F37DF43B-049F-47DF-AA02-84A3A98F4AC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F37DF43B-049F-47DF-AA02-84A3A98F4AC0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1E3F9280-29DE-4C6C-ABE1-86424D765823}
+	EndGlobalSection
+EndGlobal

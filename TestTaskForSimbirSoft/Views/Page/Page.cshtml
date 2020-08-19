@@ -1,0 +1,30 @@
+﻿@{
+    @model IEnumerable<Page>
+    Layout = "_Layout";
+}
+ <table class="table table-sm" style="position: relative; top:+70px; width: 90%">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Адрес</th>
+                <th scope="col">Количество слов</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (Page page in Model)
+                {
+                    <tr>
+                        <th scope="row">@Html.DisplayFor(p=>page.Id)</th>
+                        <td>@Html.ActionLink(page.PageAddress,"GetWords","Page", new { id = page.Id })</td>
+                        <td>@Html.DisplayFor(p=>page.CountWords)</td>
+                        <td>@Html.ActionLink("Скачать HTML страницу","GetWebPage","Page", new { id = page.Id })</td>
+                        <td>@Html.ActionLink("Удалить страницу", "DeletePage", "Page", new { id = page.Id })</td>
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
