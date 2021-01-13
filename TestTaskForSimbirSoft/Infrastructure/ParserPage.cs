@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using System.Net;
 using NLog;
@@ -18,11 +17,11 @@ namespace TestTaskForSimbirSoft.Infrastructure
         /// Метод получает содержимое веб страницы и удаляет все лешнее, оставляя только содержащиеся слова.
         /// </summary>
         /// <returns>Возвращает список слов содержащихся на странице.</returns>
-        public static List<String> PageFormatting(String pageAddress)
+        public static List<string> PageFormatting(string pageAddress)
         {
             WebClient client = new WebClient();
             client.Headers.Add("user-agent", "Only a test!");
-            String contentPage;
+            string contentPage;
 
             contentPage = DeleteScriptTags(client.DownloadString(pageAddress));
             contentPage = DeleteStyleTags(contentPage);
@@ -77,7 +76,7 @@ namespace TestTaskForSimbirSoft.Infrastructure
         /// <summary>
         /// Метод отправляет запрос странице методом HEAD и получая ответ, тем самым, проверяет сущуствует ли страница.
         /// </summary>
-        public static Boolean CheckingPageForExistence(String pageAddress)
+        public static bool CheckingPageForExistence(string pageAddress)
         {
             try
             {

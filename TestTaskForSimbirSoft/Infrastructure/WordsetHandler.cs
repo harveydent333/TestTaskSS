@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using TestTaskForSimbirSoft.Models;
 
 namespace TestTaskForSimbirSoft.Infrastructure
@@ -10,16 +9,25 @@ namespace TestTaskForSimbirSoft.Infrastructure
     /// <summary>
     /// Класс обрабатывает коллекцию слов с веб страницы.
     /// </summary>
-    public class WordsetHandler
+    public class WordsetHandler : IWordsetHandler
     {
-        private static Logger logger = LogManager.GetCurrentClassLogger();
+        private readonly IWordRepository wordRepository;
+        private readonly IPageRepository pageRepository;
+
+        public WordsetHandler(IWordRepository wordRepository, IPageRepository pageRepository)
+        {
+            this.wordRepository = wordRepository;
+            this.pageRepository = pageRepository;
+        }
+
+        private Logger logger = LogManager.GetCurrentClassLogger();
         /// <summary>
         /// Данный метод принимает набор слов обрабатываемой страницы и перебирает каждое слово. Если слово уже встречалось ранее на странице сайта, то метод обновляет счетчик.
         /// Иначе добавляет информацию о слове в таблицу базы данных.
         /// </summary>
-        public static void DictionaryAnalyzer(IWordRepository wordRepository, IPageRepository pageRepository, Page page, List<string> wordsFromPage)
+        public void DictionaryAnalyzer(Page page, List<string> wordsFromPage)
         {
-            foreach (String word in wordsFromPage)
+            foreach (string word in wordsFromPage)
             {
                 if (wordRepository.FindWordByName(word) != null)
                 {

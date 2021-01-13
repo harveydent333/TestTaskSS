@@ -5,7 +5,12 @@ VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestTaskForSimbirSoft", "TestTaskForSimbirSoft\TestTaskForSimbirSoft.csproj", "{DA6F5B6B-6DA5-445B-8FCC-5CB5E70E32D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTaskForSimbirSoft.Test", "TestTaskForSimbirSoft.Test\TestTaskForSimbirSoft.Test.csproj", "{F37DF43B-049F-47DF-AA02-84A3A98F4AC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestTaskForSimbirSoft.Test", "TestTaskForSimbirSoft.Test\TestTaskForSimbirSoft.Test.csproj", "{F37DF43B-049F-47DF-AA02-84A3A98F4AC0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{330F86A7-526E-4B90-8583-479A60BDF7BB}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

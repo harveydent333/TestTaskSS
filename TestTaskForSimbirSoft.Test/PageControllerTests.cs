@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using TestTaskForSimbirSoft.Controllers;
+using TestTaskForSimbirSoft.Infrastructure;
 using TestTaskForSimbirSoft.Models;
 using Xunit;
 
@@ -13,18 +15,22 @@ namespace TestTaskForSimbirSoft.Test
     {
         private Mock<IPageRepository> mockPage;
         private Mock<IWordRepository> mockWord;
+        private Mock<IWordsetHandler> mockWordsetHandler;
+        private Mock<IWebHostEnvironment> mockWebHostEnvironment; 
         
         public PageControllerTests()
         {
             mockPage = new Mock<IPageRepository>();
             mockWord = new Mock<IWordRepository>();
+            mockWordsetHandler = new Mock<IWordsetHandler>();
+            mockWebHostEnvironment = new Mock<IWebHostEnvironment>();
         }
 
         [Fact]
         public void IndexViewNameEqualIndex()
         {
             // Arrange
-            var controller = new PageController(mockWord.Object, mockPage.Object);
+            var controller = new PageController(mockWordsetHandler.Object, mockWord.Object, mockPage.Object, mockWebHostEnvironment.Object);
 
             // Act
             ViewResult result = controller.Index() as ViewResult;
@@ -38,7 +44,7 @@ namespace TestTaskForSimbirSoft.Test
         {
             // Arrange
             mockPage.Setup(rp => rp.Pages).Returns((IEnumerable<Page>)GetTestPages());
-            var controller = new PageController(mockWord.Object, mockPage.Object);
+            var controller = new PageController(mockWordsetHandler.Object, mockWord.Object, mockPage.Object, mockWebHostEnvironment.Object);
 
             //Act
             var result = controller.Index() as ViewResult;

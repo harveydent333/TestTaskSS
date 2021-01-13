@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace TestTaskForSimbirSoft.Models
 {
@@ -18,10 +17,10 @@ namespace TestTaskForSimbirSoft.Models
         /// <summary>
         /// Метод связывает репозиторий с базой данных
         /// </summary>
-        /// <param name="cont"></param>
-        public PageRepository(ApplicationDbContext cont)
+        /// <param name="context"></param>
+        public PageRepository(ApplicationDbContext context)
         {
-            this.context = cont;
+            this.context = context;
         }
 
         /// <summary>
@@ -49,7 +48,7 @@ namespace TestTaskForSimbirSoft.Models
         /// <summary>
         /// Метод удаляет запись страницы из базы данных с указанным ID.
         /// </summary>
-        public void DeletePage(Int32? id)
+        public void DeletePage(int? id)
         {
             try
             {
@@ -64,7 +63,7 @@ namespace TestTaskForSimbirSoft.Models
         /// <summary>
         /// Метод возвращает запись страницы с интересующим адресом.
         /// </summary>
-        public Page FindPageByAddress(String pageAddress)
+        public Page FindPageByAddress(string pageAddress)
         {
             try
             {
@@ -80,7 +79,7 @@ namespace TestTaskForSimbirSoft.Models
         /// <summary>
         /// Метод возвращает запись страницы с интересующим Id.
         /// </summary>
-        public Page FinedPagById(Int32? id)
+        public Page FinedPagById(int? id)
         {
             try
             {

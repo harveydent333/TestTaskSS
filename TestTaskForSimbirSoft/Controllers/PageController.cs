@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using NLog;
@@ -14,17 +13,23 @@ namespace TestTaskForSimbirSoft.Controllers
 {
     public class PageController : Controller
     {
-        private static Logger logger = LogManager.GetCurrentClassLogger();
+        private readonly Logger logger = LogManager.GetCurrentClassLogger();
 
-        private IWordRepository wordRepository;
-        private IPageRepository pageRepository;
+        private readonly IWordRepository wordRepository;
+        private readonly IPageRepository pageRepository;
         private readonly IWebHostEnvironment _appEnvironment;
+        private readonly IWordsetHandler wordsetHandler;
 
         /// <summary>
         /// Конструктор контроллера при инициализации запрашивает экземпляры репозиториев Word и Page
         /// </summary>
-        public PageController(IWordRepository wordRepository, IPageRepository pageRepository, IWebHostEnvironment appEnvironment)
+        public PageController(
+            IWordsetHandler wordsetHandler,
+            IWordRepository wordRepository,
+            IPageRepository pageRepository,
+            IWebHostEnvironment appEnvironment)
         {
+            this.wordsetHandler = wordsetHandler;
             this.wordRepository = wordRepository;
             this.pageRepository = pageRepository;
             _appEnvironment = appEnvironment;
@@ -40,7 +45,7 @@ namespace TestTaskForSimbirSoft.Controllers
         /// Метод возврщает представление Words и передает данные слов в пренадлежащие страницы.
         /// </summary>
         [HttpGet("Words/{id}")]
-        public IActionResult GetWords(Int32? id)
+        public IActionResult GetWords(int? id)
         {
             return View("Words", wordRepository?.Words?.Where(w => w.PageId == id));
         }
@@ -61,7 +66,7 @@ namespace TestTaskForSimbirSoft.Controllers
                         pageRepository.AddPage(page);
                         pageRepository.Save();
                         wordsFromPage = ParserPage.PageFormatting(page?.PageAddress);
-                        WordsetHandler.DictionaryAnalyzer(wordRepository, pageRepository, page, wordsFromPage);
+                        wordsetHandler.DictionaryAnalyzer(page, wordsFromPage);
                         return RedirectToAction("Index");
                     }
                     else
@@ -105,7 +110,7 @@ namespace TestTaskForSimbirSoft.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("GetPage/{id}")]
-        public IActionResult GetWebPage(Int32? id)
+        public IActionResult GetWebPage(int? id)
         {
             try
             {

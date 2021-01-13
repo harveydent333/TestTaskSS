@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using System.Web;
-using System.Text;
-using System.IO;
-using TestTaskForSimbirSoft.Infrastructure;
-using TestTaskForSimbirSoft.Models;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace TestTaskForSimbirSoft.Controllers
 {

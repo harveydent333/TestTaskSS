@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 
 namespace TestTaskForSimbirSoft.Models
 {
@@ -47,7 +44,9 @@ namespace TestTaskForSimbirSoft.Models
         /// </summary>
         public Word FindWordByName(string wordName)
         {
-            return context.Words.Where(w => w.WordName == wordName).FirstOrDefault();
+            return context.Words
+                .Where(w => w.WordName == wordName)
+                .FirstOrDefault();
         }
 
         /// <summary>
